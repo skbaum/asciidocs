@@ -1,7 +1,7 @@
 THREDDS and NetCDF: Creating and Serving Datasets in the Geosciences
 ===================================================================
 Steven K. Baum
-v0.9, 2014-06-25
+v0.9, 2014-07-15
 :doctype: book
 :toc:
 :icons:
@@ -12977,88 +12977,6 @@ netcdf example {   // example of CDL notation
 The CDL language is defined in the NetCDF Utilities section of the
 NetCDF Users' Guide at:
 
-http://www.unidata.ucar.edu/software/netcdf/docs/netcdf/index.html[+http://www.unidata.ucar.edu/software/netcdf/docs/netcdf/index.html+]
-
-and the three entries in the Relevant Documentation section link to
-the subsections in the Guide that define the syntax, data types
-and constants for the language.
-
-[[CDM]]
-[appendix]
-CDM
----
-
-Relevant Documentation
-~~~~~~~~~~~~~~~~~~~~~~
-
-CDM Version 4 - http://www.unidata.ucar.edu/software/netcdf-java/CDM/[+http://www.unidata.ucar.edu/software/netcdf-java/CDM/+]
-
-CDM and TDS -
-http://www.unidata.ucar.edu/projects/THREDDS/CDM/CDM-TDS.htm[+http://www.unidata.ucar.edu/projects/THREDDS/CDM/CDM-TDS.htm+]
-
-CDM Data Types -
-http://www.unidata.ucar.edu/software/netcdf-java/CDM/DataType.html[+http://www.unidata.ucar.edu/software/netcdf-java/CDM/DataType.html+]
-
-CDM Object Names -
-http://www.unidata.ucar.edu/software/netcdf-java/CDM/Identifiers.html[+http://www.unidata.ucar.edu/software/netcdf-java/CDM/Identifiers.html+]
-
-CDM File Types -
-http://www.unidata.ucar.edu/software/netcdf-java/formats/FileTypes.html[+http://www.unidata.ucar.edu/software/netcdf-java/formats/FileTypes.html+]
-
-CDM Implementation of CF Sampling Features -
-http://www.unidata.ucar.edu/software/netcdf-java/reference/FeatureDatasets/CFpointImplement.html[+http://www.unidata.ucar.edu/software/netcdf-java/reference/FeatureDatasets/CFpointImplement.html+]
-
-CDM Calendar Date Handling -
-http://www.unidata.ucar.edu/software/netcdf-java/CDM/CalendarDateTime.html[+http://www.unidata.ucar.edu/software/netcdf-java/CDM/CalendarDateTime.html+]
-
-Overview
-~~~~~~~~
-
-The Common Data Model (CDM) is an abstract data model for scientific datasets.
-It was developed by merging the data models for NetCDF, OPeNDAP and HDF to
-create a common API for many types of scientific data.
-The NetCDF-Java Library implements the CDM, and can read around 20 formats
-besides the NetCDF, OPeNDAP and HDF format used to create it.  A list of
-the readable formats is available here:
-
-http://www.unidata.ucar.edu/software/netcdf-java/formats/FileTypes.html[+http://www.unidata.ucar.edu/software/netcdf-java/formats/FileTypes.html+]
-
-The CDM has three layers that build on top of each other to add successively
-richer semantics.  These layers are:
-
-* the bottom or *data access layer* or *syntactic layer* - which handles reading and
-writing;
-* the middle or *coordinate system layer* - which identifies the coordinates of the data
-arrays, and also specialized *georeferencing coordinate systems*; and
-* the top or *scientific feature type layer* - which identifies specific types of data
-such as grids and point data, adding specialized methods for each type.
-
-The
-
-[[NetCDF-Java]]
-[appendix]
-NetCDF-Java Library
--------------------
-
-Relevant Documentation
-~~~~~~~~~~~~~~~~~~~~~~
-
-NetCDF-Java Documentation -
-http://www.unidata.ucar.edu/software/netcdf-java/documentation.htm[+http://www.unidata.ucar.edu/software/netcdf-java/documentation.htm+]
-
-NetCDF-Java Tutorial -
-http://www.unidata.ucar.edu/software/netcdf-java/tutorial/index.html[+http://www.unidata.ucar.edu/software/netcdf-java/tutorial/index.html+]
-
-* Reading NetCDF Files with NetcdfFile -
-http://www.unidata.ucar.edu/software/netcdf-java/tutorial/NetcdfFile.html[+http://www.unidata.ucar.edu/software/netcdf-java/tutorial/NetcdfFile.html+]
-
-* NetCDF Extensions with NetcdfDataset -
-http://www.unidata.ucar.edu/software/netcdf-java/tutorial/NetcdfDataset.html[+http://www.unidata.ucar.edu/software/netcdf-java/tutorial/NetcdfDataset.html+] 
-
-* Writing Files with NetcdfFileWriteable -
-http://www.unidata.ucar.edu/software/netcdf-java/tutorial/NetcdfWriteable.html[+http://www.unidata.ucar.edu/software/netcdf-java/tutorial/NetcdfWriteable.html+]
-
-*Writing an IOSP for a File Format* -
 http://www.unidata.ucar.edu/software/netcdf-java/tutorial/IOSPoverview.html[+http://www.unidata.ucar.edu/software/netcdf-java/tutorial/IOSPoverview.html+]
 
 *Coordinate Systems* -
