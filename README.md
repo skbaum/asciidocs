@@ -7,6 +7,8 @@ A repository for the various documents - brobdingnagian and otherwise - I mainta
 
 **ctd.txt** - An overview of software for analyzing and displaying oceanographic CTD data.
 
+**garden.txt** - An annotated bibligraphy of gardening literature pertinent to central Texas.
+
 **irods.txt** - An overview - including installation details - of the [iRODS](http://irods.org/) distributed filesystem.
 
 **nam_grd.txt** - Details about the grids used in the NAM/NARR atmospheric circulation models.
