@@ -18,3 +18,5 @@ A repository for the various documents - brobdingnagian and otherwise - I mainta
 **thredds2.txt** - A tutorial on using the [THREDDS](http://www.unidata.ucar.edu/software/thredds/current/tds/) server package.
 
 **thredds_examples.txt** - Various examples of [THREDDS](http://www.unidata.ucar.edu/software/thredds/current/tds/) use cases.
+
+**waf.txt* - An overview of Web Accessible Folders (WAF) and how to create them.
