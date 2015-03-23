@@ -17,6 +17,8 @@ A repository for the various documents - brobdingnagian and otherwise - I mainta
 
 **papers.txt** - A mildly organized bibliography of interesting papers/books/articles/etc. with abstracts.
 
+**river.txt** - Details on how to automatically obtain and process river discharge data from USACOE and USGS servers.
+
 **soft.txt** - An annotated list of interesting software packages, e.g. Python, geosciences, parallel computing, etc.
 
 **thredds2.txt** - A tutorial on using the [THREDDS](http://www.unidata.ucar.edu/software/thredds/current/tds/) server package.
