@@ -1,0 +1,1159 @@
+CUDA
+====
+Steven K. Baum
+v0.1, 2016-12-14
+:doctype: book
+:toc:
+:icons:
+
+:numbered!:
+
+[preface]
+
+Meta
+----
+
+http://www.iwocl.org/resources/opencl-libraries-and-toolkits/[+http://www.iwocl.org/resources/opencl-libraries-and-toolkits/+]
+
+Glossary
+--------
+
+CUDA
+~~~~
+
+=====
+CUDA is a parallel computing platform and application programming interface (API) model created by Nvidia. It allows software developers and software engineers to use a CUDA-enabled graphics processing unit (GPU) for general purpose processing – an approach termed GPGPU (General-Purpose computing on Graphics Processing Units). The CUDA platform is a software layer that gives direct access to the GPU's virtual instruction set and parallel computational elements, for the execution of compute kernels.
+
+The CUDA platform is designed to work with programming languages such as C, C++, and Fortran. This accessibility makes it easier for specialists in parallel programming to use GPU resources, in contrast to prior APIs like Direct3D and OpenGL, which required advanced skills in graphics programming. Also, CUDA supports programming frameworks such as OpenACC and OpenCL.
+=====
+
+https://developer.nvidia.com/cuda-zone[+https://developer.nvidia.com/cuda-zone+]
+
+https://en.wikipedia.org/wiki/CUDA[+https://en.wikipedia.org/wiki/CUDA+]
+
+GCN
+~~~
+
+=====
+Available on select AMD Radeon™ R7 series, R9 series and HD 7000 series graphics cards, the visionary Graphics Core Next (GCN) Architecture is a radically new approach to the design of a consumer GPU, making it a top choice for gamers who expect the best.
+
+Designed to push not only the boundaries of DirectX® 11 gaming, the GCN Architecture is also AMD's first design specifically engineered for general computing.  Representing the cutting edge of AMD’s graphics expertise, GCN GPUs are more than capable of handling workloads-and programming languages-traditionally exclusive to the main processor. Coupled with the dramatic rise of GPU-aware programming languages like C++ AMP and OpenCL.
+=====
+
+http://www.amd.com/en-us/innovations/software-technologies/gcn[+http://www.amd.com/en-us/innovations/software-technologies/gcn+]
+
+GPGPU
+~~~~~
+
+=====
+General-purpose computing on graphics processing units (GPGPU, rarely GPGP or GP²U) is the use of a graphics processing unit (GPU), which typically handles computation only for computer graphics, to perform computation in applications traditionally handled by the central processing unit (CPU). The use of multiple video cards in one computer, or large numbers of graphics chips, further parallelizes the already parallel nature of graphics processing. In addition, even a single GPU-CPU framework provides advantages that multiple CPUs on their own do not offer due to the specialization in each chip.
+
+Essentially, a GPGPU pipeline is a kind of parallel processing between one or more GPUs and CPUs that analyzes data as if it were in image or other graphic form. While GPUs operate at lower frequencies, they typically have many times the number of cores. Thus, GPUs can operate on pictures and graphical data effectively far faster than a traditional CPU. Migrating data into graphical form and then using the GPU to scan and analyze it can result in profound speedup.
+=====
+
+https://en.wikipedia.org/wiki/General-purpose_computing_on_graphics_processing_units[+https://en.wikipedia.org/wiki/General-purpose_computing_on_graphics_processing_units+]
+
+GPU
+~~~
+
+=====
+A graphics processing unit (GPU), occasionally called visual processing unit (VPU), is a specialized electronic circuit designed to rapidly manipulate and alter memory to accelerate the creation of images in a frame buffer intended for output to a display device. GPUs are used in embedded systems, mobile phones, personal computers, workstations, and game consoles. Modern GPUs are very efficient at manipulating computer graphics and image processing, and their highly parallel structure makes them more efficient than general-purpose CPUs for algorithms where the processing of large blocks of data is done in parallel. In a personal computer, a GPU can be present on a video card, or it can be embedded on the motherboard or—in certain CPUs—on the CPU die.
+=====
+
+https://en.wikipedia.org/wiki/Graphics_processing_unit[+https://en.wikipedia.org/wiki/Graphics_processing_unit+]
+
+GPUOpen
+~~~~~~~
+
+=====
+An AMD initiative designed to enable developers to create ground-breaking PC games, computer generated imagery and GPU computing applications for great performance and lifelike experiences using no cost and open development tools and software.
+
+GPUOpen unifies many of AMD's previously separate tools and solutions into one package, also fully open-sourcing them under the MIT License.[3] GPUOpen also makes it easy for developers to get low-level GPU access.
+=====
+
+http://gpuopen.com/[+http://gpuopen.com/+]
+
+https://en.wikipedia.org/wiki/GPUOpen[+https://en.wikipedia.org/wiki/GPUOpen+]
+
+OpenACC
+~~~~~~~
+
+=====
+OpenACC (for open accelerators) is a programming standard for parallel computing developed by Cray, CAPS, Nvidia and PGI. The standard is designed to simplify parallel programming of heterogeneous CPU/GPU systems.
+Like in OpenMP, the programmer can annotate C, C++ and Fortran source code to identify the areas that should be accelerated using compiler directives and additional functions. Like OpenMP 4.0 and newer, code can be started on both the CPU and GPU.
+=====
+
+http://www.openacc.org/[+http://www.openacc.org/+]
+
+https://en.wikipedia.org/wiki/OpenACC[+https://en.wikipedia.org/wiki/OpenACC+]
+
+OpenCL
+~~~~~~
+
+=====
+Open Computing Language (OpenCL) is a framework for writing programs that execute across heterogeneous platforms consisting of central processing units (CPUs), graphics processing units (GPUs), digital signal processors (DSPs), field-programmable gate arrays (FPGAs) and other processors or hardware accelerators. OpenCL specifies a programming language (based on C99) for programming these devices and application programming interfaces (APIs) to control the platform and execute programs on the compute devices. OpenCL provides a standard interface for parallel computing using task- and data-based parallelism.
+
+OpenCL defines an application programming interface (API) that allows programs running on the host to launch kernels on the compute devices and manage device memory, which is (at least conceptually) separate from host memory. Programs in the OpenCL language are intended to be compiled at run-time, so that OpenCL-using applications are portable between implementations for various host devices.[12] The OpenCL standard defines host APIs for C and C++; third-party APIs exist for other programming languages and platforms such as Python,[13] Java and .NET.[10]:15 An implementation of the OpenCL standard consists of a library that implements the API for C and C++, and an OpenCL C compiler for the compute device(s) targeted.
+
+Both NVIDA and Radeon support OpenCL 1.2.
+=====
+
+https://www.khronos.org/opencl/[+https://www.khronos.org/opencl/+]
+
+https://en.wikipedia.org/wiki/OpenCL[+https://en.wikipedia.org/wiki/OpenCL+]
+
+OpenMP
+~~~~~~
+
+=====
+OpenMP (Open Multi-Processing) is an application programming interface (API) that supports multi-platform shared memory multiprocessing programming in C, C++, and Fortran,[3] on most platforms, processor architectures and operating systems, including Solaris, AIX, HP-UX, Linux, macOS, and Windows. It consists of a set of compiler directives, library routines, and environment variables that influence run-time behavior.
+=====
+
+http://www.openmp.org/[+http://www.openmp.org/+]
+
+http://www.openmp.org/resources/openmp-compilers/[+http://www.openmp.org/resources/openmp-compilers/+]
+
+https://en.wikipedia.org/wiki/OpenMP[+https://en.wikipedia.org/wiki/OpenMP+]
+
+SPIR-V
+~~~~~~
+
+=====
+SPIR-V is the first open standard, cross-API intermediate language for natively representing parallel compute and graphics and is incorporated as part of the core specification of both OpenCL 2.1 and OpenCL 2.2 and the new Vulkan graphics and compute API.
+
+SPIR-V exposes the machine model for OpenCL 1.2, 2.0, 2.1, 2.2 and Vulkan - including full flow control, and graphics and parallel constructs not supported in LLVM. SPIR-V also supports OpenCL C and OpenCL C++ kernel languages as well as the GLSL shader language for Vulkan (under development).
+=====
+
+https://www.khronos.org/spir[+https://www.khronos.org/spir+]
+
+SYCL
+~~~~
+
+=====
+A cross-platform abstraction layer that builds on the underlying concepts, portability and efficiency of OpenCL that enables code for heterogeneous processors to be written in a “single-source” style using completely standard C++.   SYCL enables single source development where C++ template functions can contain both host and device code to construct complex algorithms that use OpenCL acceleration, and then re-use them throughout their source code on different types of data.
+
+SYCL 2.2 was launched in parallel with OpenCL 2.2 and enables the capabilities of OpenCL 2.2 to be leveraged while keeping host and device code in a single source file. The open-source C++ 17 Parallel STL for SYCL, hosted by Khronos, enables the upcoming C++ standard to support OpenCL 2.2 features such as shared virtual memory, generic pointers and device-side enqueue.
+=====
+
+https://www.khronos.org/sycl[+https://www.khronos.org/sycl+]
+
+Vulkan
+~~~~~~
+
+=====
+Vulkan is a low-overhead, cross-platform 3D graphics and compute API first announced at GDC 2015 by the Khronos Group.[10][11][12] The Vulkan API was initially referred to as the "next generation OpenGL initiative," or "OpenGL next"[13] by Khronos, but use of those names were discontinued once the Vulkan name was announced.[14] Vulkan is derived from and built upon components of AMD's Mantle API, which was donated by AMD to Khronos with the intent of giving Khronos a foundation on which to begin developing a low-level API that they could standardize across the industry, much like OpenGL.
+
+Like OpenGL, Vulkan targets high-performance realtime 3D graphics applications such as video games and interactive media across all platforms, and can offer higher performance and more balanced CPU/GPU usage, much like Direct3D 12 and Mantle. Other major differences to Direct3D (prior to version 12) and OpenGL are Vulkan being a considerably lower level API and offering parallel tasking. Vulkan also has the ability to render 2D graphics applications,[20] however it is generally suited for 3D. In addition to its lower CPU usage, Vulkan is also able to better distribute work amongst multiple CPU cores.
+=====
+
+https://en.wikipedia.org/wiki/Vulkan_%28API%29[+https://en.wikipedia.org/wiki/Vulkan_%28API%29+]
+
+NVIDIA Accelerated Computing Toolkit
+------------------------------------
+
+=====
+The NVIDIA Accelerated Computing Toolkit is a suite of tools, libraries, middleware solutions and more for developing applications with breakthrough levels of performance. Combined with the performance of GPUs, the toolkit helps developers start immediately accelerating applications on NVIDIA’s embedded, PC, workstation, server, and cloud datacenter platforms. 
+=====
+
+CUDA Home - http://www.nvidia.com/object/cuda_home_new.html[http://www.nvidia.com/object/cuda_home_new.html]
+
+CUDA Zone - https://developer.nvidia.com/cuda-zone[https://developer.nvidia.com/cuda-zone]
+
+CUDA Toolkit
+~~~~~~~~~~~~
+
+https://developer.nvidia.com/cuda-toolkit[https://developer.nvidia.com/cuda-toolkit]
+
+=====
+The NVIDIA® CUDA® Toolkit provides a comprehensive development environment for C and C++ developers building GPU-accelerated applications. The CUDA Toolkit includes a compiler for NVIDIA GPUs, math libraries, and tools for debugging and optimizing the performance of your applications. You’ll also find programming guides, user manuals, API reference, and other documentation to help you get started quickly accelerating your application with GPUs.
+=====
+
+Downloads Page - https://developer.nvidia.com/cuda-downloads[+https://developer.nvidia.com/cuda-downloads+]
+
+Choose the combination Linux-x96_64-CentOS-7-runfile to get a 1.4 GB file:
+
+-----
+cuda_8.0.61_375.26_linux.run
+-----
+
+Now run the file.
+
+-----
+chmod a+x cuda_8.0.61_375.26_linux.run
+su
+./cuda_8.0.61_375.26_linux.run
+...
+  Do you accept the previously read EULA?
+accept/decline/quit? accept
+
+Install NVIDIA Accelerated Graphics Driver for Linux-x86_64 375.26?
+(y)es/(n)o/(q)uit: n
+
+Install the CUDA 8.0 Toolkit?
+(y)es/(n)o/(q)uit: y
+
+Enter Toolkit Location
+ [ default is /usr/local/cuda-8.0 ]:  /opt/cuda-8.0.61
+
+Do you want to install a symbolic link at /usr/local/cuda?
+(y)es/(n)o/(q)uit: n
+
+Install the CUDA 8.0 Samples?
+(y)es/(n)o/(q)uit: y
+
+Enter CUDA Samples Location
+ [ default is /root ]: /opt/cuda-8.0.61/samples
+
+Installing the CUDA Toolkit in /opt/cuda-8.0.61 ...
+
+Installing the CUDA Samples in /opt/cuda-8.0.61/samples ...
+
+===========
+= Summary =
+===========
+
+Driver:   Not Selected
+Toolkit:  Installed in /opt/cuda-8.0.61
+Samples:  Installed in /opt/cuda-8.0.61/samples
+
+Please make sure that
+ -   PATH includes /opt/cuda-8.0.61/bin
+ -   LD_LIBRARY_PATH includes /opt/cuda-8.0.61/lib64, or, add /opt/cuda-8.0.61/lib64 to /etc/ld.so.conf and run ldconfig as root
+
+To uninstall the CUDA Toolkit, run the uninstall script in /opt/cuda-8.0.61/bin
+
+Please see CUDA_Installation_Guide_Linux.pdf in /opt/cuda-8.0.61/doc/pdf for detailed information on setting up CUDA.
+
+***WARNING: Incomplete installation! This installation did not install the CUDA Driver. A driver of version at least 361.00 is required for CUDA 8.0 functionality to work.
+To install the driver using this installer, run the following command, replacing <CudaInstaller> with the name of this run file:
+    sudo <CudaInstaller>.run -silent -driver
+
+Logfile is /tmp/cuda_install_2425.log
+-----
+
+The binary files installed in +/opt/cuda-8.0.61/bin+ are:
+
+-----
+-rwxr-xr-x. 1 root root   137688 Feb 15 15:01 bin2c
+lrwxrwxrwx. 1 root root        4 Feb 15 15:01 computeprof -> nvvp
+drwxr-xr-x. 2 root root       55 Feb 15 15:01 crt
+-rwxr-xr-x. 1 root root  3951104 Feb 15 15:01 cudafe
+-rwxr-xr-x. 1 root root  3575128 Feb 15 15:01 cudafe++
+-rwxr-xr-x. 1 root root  8439134 Feb 15 15:01 cuda-gdb
+-rwxr-xr-x. 1 root root   452632 Feb 15 15:01 cuda-gdbserver
+-rwxr-xr-x. 1 root root      781 Feb 15 15:02 cuda-install-samples-8.0.sh
+-rwxr-xr-x. 1 root root   274480 Feb 15 15:01 cuda-memcheck
+-rwxr-xr-x. 1 root root   353472 Feb 15 15:01 cuobjdump
+-rwxr-xr-x. 1 root root   196840 Feb 15 15:01 fatbinary
+-rwxr-xr-x. 1 root root  1169984 Feb 15 15:01 gpu-library-advisor
+-rwxr-xr-x. 1 root root      219 Feb 15 15:01 nsight
+-rwxr-xr-x. 1 root root   245680 Feb 15 15:01 nvcc
+-rw-r--r--. 1 root root      411 Feb 15 15:01 nvcc.profile
+-rwxr-xr-x. 1 root root 13676464 Feb 15 15:01 nvdisasm
+-rwxr-xr-x. 1 root root  6661600 Feb 15 15:01 nvlink
+-rwxr-xr-x. 1 root root 11227288 Feb 15 15:01 nvprof
+-rwxr-xr-x. 1 root root   157712 Feb 15 15:01 nvprune
+-rwxr-xr-x. 1 root root      215 Feb 15 15:01 nvvp
+-rwxr-xr-x. 1 root root  6558072 Feb 15 15:01 ptxas
+-rwxr-xr-x. 1 root root     7686 Feb 15 15:02 uninstall_cuda_8.0.pl
+-----
+
+The library files installed in +/opt/cuda-8.0.61/lib64+ are:
+
+-----
+-rw-r--r--. 1 root root  53464088 Feb 15 15:01 libcublas_device.a
+lrwxrwxrwx. 1 root root        16 Feb 15 15:01 libcublas.so -> libcublas.so.8.0
+lrwxrwxrwx. 1 root root        19 Feb 15 15:01 libcublas.so.8.0 -> libcublas.so.8.0.61
+-rwxr-xr-x. 1 root root  42505456 Feb 15 15:01 libcublas.so.8.0.61
+-rw-r--r--. 1 root root  49080634 Feb 15 15:01 libcublas_static.a
+-rw-r--r--. 1 root root    556000 Feb 15 15:01 libcudadevrt.a
+lrwxrwxrwx. 1 root root        16 Feb 15 15:01 libcudart.so -> libcudart.so.8.0
+lrwxrwxrwx. 1 root root        19 Feb 15 15:01 libcudart.so.8.0 -> libcudart.so.8.0.61
+-rwxr-xr-x. 1 root root    415432 Feb 15 15:01 libcudart.so.8.0.61
+-rw-r--r--. 1 root root    775162 Feb 15 15:01 libcudart_static.a
+lrwxrwxrwx. 1 root root        15 Feb 15 15:01 libcufft.so -> libcufft.so.8.0
+lrwxrwxrwx. 1 root root        18 Feb 15 15:01 libcufft.so.8.0 -> libcufft.so.8.0.61
+-rwxr-xr-x. 1 root root 146765440 Feb 15 15:01 libcufft.so.8.0.61
+-rw-r--r--. 1 root root 129661426 Feb 15 15:01 libcufft_static.a
+lrwxrwxrwx. 1 root root        16 Feb 15 15:01 libcufftw.so -> libcufftw.so.8.0
+lrwxrwxrwx. 1 root root        19 Feb 15 15:01 libcufftw.so.8.0 -> libcufftw.so.8.0.61
+-rwxr-xr-x. 1 root root    476840 Feb 15 15:01 libcufftw.so.8.0.61
+-rw-r--r--. 1 root root     42294 Feb 15 15:01 libcufftw_static.a
+lrwxrwxrwx. 1 root root        17 Feb 15 15:01 libcuinj64.so -> libcuinj64.so.8.0
+lrwxrwxrwx. 1 root root        20 Feb 15 15:01 libcuinj64.so.8.0 -> libcuinj64.so.8.0.61
+-rwxr-xr-x. 1 root root   6403784 Feb 15 15:01 libcuinj64.so.8.0.61
+-rw-r--r--. 1 root root   1649302 Feb 15 15:01 libculibos.a
+lrwxrwxrwx. 1 root root        16 Feb 15 15:01 libcurand.so -> libcurand.so.8.0
+lrwxrwxrwx. 1 root root        19 Feb 15 15:01 libcurand.so.8.0 -> libcurand.so.8.0.61
+-rwxr-xr-x. 1 root root  59163968 Feb 15 15:01 libcurand.so.8.0.61
+-rw-r--r--. 1 root root  59359140 Feb 15 15:01 libcurand_static.a
+lrwxrwxrwx. 1 root root        18 Feb 15 15:01 libcusolver.so -> libcusolver.so.8.0
+lrwxrwxrwx. 1 root root        21 Feb 15 15:01 libcusolver.so.8.0 -> libcusolver.so.8.0.61
+-rwxr-xr-x. 1 root root  53866552 Feb 15 15:01 libcusolver.so.8.0.61
+-rw-r--r--. 1 root root  22386284 Feb 15 15:01 libcusolver_static.a
+lrwxrwxrwx. 1 root root        18 Feb 15 15:01 libcusparse.so -> libcusparse.so.8.0
+lrwxrwxrwx. 1 root root        21 Feb 15 15:01 libcusparse.so.8.0 -> libcusparse.so.8.0.61
+-rwxr-xr-x. 1 root root  43034120 Feb 15 15:01 libcusparse.so.8.0.61
+-rw-r--r--. 1 root root  51650816 Feb 15 15:01 libcusparse_static.a
+lrwxrwxrwx. 1 root root        14 Feb 15 15:01 libnppc.so -> libnppc.so.8.0
+lrwxrwxrwx. 1 root root        17 Feb 15 15:01 libnppc.so.8.0 -> libnppc.so.8.0.61
+-rwxr-xr-x. 1 root root    456512 Feb 15 15:01 libnppc.so.8.0.61
+-rw-r--r--. 1 root root     24512 Feb 15 15:01 libnppc_static.a
+lrwxrwxrwx. 1 root root        16 Feb 15 15:01 libnppial.so -> libnppial.so.8.0
+lrwxrwxrwx. 1 root root        19 Feb 15 15:01 libnppial.so.8.0 -> libnppial.so.8.0.61
+-rwxr-xr-x. 1 root root  10116032 Feb 15 15:01 libnppial.so.8.0.61
+lrwxrwxrwx. 1 root root        16 Feb 15 15:01 libnppicc.so -> libnppicc.so.8.0
+lrwxrwxrwx. 1 root root        19 Feb 15 15:01 libnppicc.so.8.0 -> libnppicc.so.8.0.61
+-rwxr-xr-x. 1 root root   3790368 Feb 15 15:01 libnppicc.so.8.0.61
+lrwxrwxrwx. 1 root root        17 Feb 15 15:01 libnppicom.so -> libnppicom.so.8.0
+lrwxrwxrwx. 1 root root        20 Feb 15 15:01 libnppicom.so.8.0 -> libnppicom.so.8.0.61
+-rwxr-xr-x. 1 root root   1030800 Feb 15 15:01 libnppicom.so.8.0.61
+lrwxrwxrwx. 1 root root        17 Feb 15 15:01 libnppidei.so -> libnppidei.so.8.0
+lrwxrwxrwx. 1 root root        20 Feb 15 15:01 libnppidei.so.8.0 -> libnppidei.so.8.0.61
+-rwxr-xr-x. 1 root root   7098600 Feb 15 15:01 libnppidei.so.8.0.61
+lrwxrwxrwx. 1 root root        15 Feb 15 15:01 libnppif.so -> libnppif.so.8.0
+lrwxrwxrwx. 1 root root        18 Feb 15 15:01 libnppif.so.8.0 -> libnppif.so.8.0.61
+-rwxr-xr-x. 1 root root  47868176 Feb 15 15:01 libnppif.so.8.0.61
+lrwxrwxrwx. 1 root root        15 Feb 15 15:01 libnppig.so -> libnppig.so.8.0
+lrwxrwxrwx. 1 root root        18 Feb 15 15:01 libnppig.so.8.0 -> libnppig.so.8.0.61
+-rwxr-xr-x. 1 root root  21052640 Feb 15 15:01 libnppig.so.8.0.61
+lrwxrwxrwx. 1 root root        15 Feb 15 15:01 libnppim.so -> libnppim.so.8.0
+lrwxrwxrwx. 1 root root        18 Feb 15 15:01 libnppim.so.8.0 -> libnppim.so.8.0.61
+-rwxr-xr-x. 1 root root   4333920 Feb 15 15:01 libnppim.so.8.0.61
+lrwxrwxrwx. 1 root root        14 Feb 15 15:01 libnppi.so -> libnppi.so.8.0
+lrwxrwxrwx. 1 root root        17 Feb 15 15:01 libnppi.so.8.0 -> libnppi.so.8.0.61
+-rwxr-xr-x. 1 root root 108924816 Feb 15 15:01 libnppi.so.8.0.61
+-rw-r--r--. 1 root root 136645168 Feb 15 15:01 libnppi_static.a
+lrwxrwxrwx. 1 root root        16 Feb 15 15:01 libnppist.so -> libnppist.so.8.0
+lrwxrwxrwx. 1 root root        19 Feb 15 15:01 libnppist.so.8.0 -> libnppist.so.8.0.61
+-rwxr-xr-x. 1 root root  14270440 Feb 15 15:01 libnppist.so.8.0.61
+lrwxrwxrwx. 1 root root        16 Feb 15 15:01 libnppisu.so -> libnppisu.so.8.0
+lrwxrwxrwx. 1 root root        19 Feb 15 15:01 libnppisu.so.8.0 -> libnppisu.so.8.0.61
+-rwxr-xr-x. 1 root root    448016 Feb 15 15:01 libnppisu.so.8.0.61
+lrwxrwxrwx. 1 root root        16 Feb 15 15:01 libnppitc.so -> libnppitc.so.8.0
+lrwxrwxrwx. 1 root root        19 Feb 15 15:01 libnppitc.so.8.0 -> libnppitc.so.8.0.61
+-rwxr-xr-x. 1 root root   2897184 Feb 15 15:01 libnppitc.so.8.0.61
+lrwxrwxrwx. 1 root root        14 Feb 15 15:01 libnpps.so -> libnpps.so.8.0
+lrwxrwxrwx. 1 root root        17 Feb 15 15:01 libnpps.so.8.0 -> libnpps.so.8.0.61
+-rwxr-xr-x. 1 root root   8178184 Feb 15 15:01 libnpps.so.8.0.61
+-rw-r--r--. 1 root root  10741440 Feb 15 15:01 libnpps_static.a
+lrwxrwxrwx. 1 root root        16 Feb 15 15:01 libnvblas.so -> libnvblas.so.8.0
+lrwxrwxrwx. 1 root root        19 Feb 15 15:01 libnvblas.so.8.0 -> libnvblas.so.8.0.61
+-rwxr-xr-x. 1 root root    498088 Feb 15 15:01 libnvblas.so.8.0.61
+lrwxrwxrwx. 1 root root        17 Feb 15 15:01 libnvgraph.so -> libnvgraph.so.8.0
+lrwxrwxrwx. 1 root root        20 Feb 15 15:01 libnvgraph.so.8.0 -> libnvgraph.so.8.0.61
+-rwxr-xr-x. 1 root root   5213656 Feb 15 15:01 libnvgraph.so.8.0.61
+-rw-r--r--. 1 root root   8169056 Feb 15 15:01 libnvgraph_static.a
+lrwxrwxrwx. 1 root root        24 Feb 15 15:01 libnvrtc-builtins.so -> libnvrtc-builtins.so.8.0
+lrwxrwxrwx. 1 root root        27 Feb 15 15:01 libnvrtc-builtins.so.8.0 -> libnvrtc-builtins.so.8.0.61
+-rwxr-xr-x. 1 root root   9656680 Feb 15 15:01 libnvrtc-builtins.so.8.0.61
+lrwxrwxrwx. 1 root root        15 Feb 15 15:01 libnvrtc.so -> libnvrtc.so.8.0
+lrwxrwxrwx. 1 root root        18 Feb 15 15:01 libnvrtc.so.8.0 -> libnvrtc.so.8.0.61
+-rwxr-xr-x. 1 root root  18512120 Feb 15 15:01 libnvrtc.so.8.0.61
+lrwxrwxrwx. 1 root root        18 Feb 15 15:01 libnvToolsExt.so -> libnvToolsExt.so.1
+lrwxrwxrwx. 1 root root        22 Feb 15 15:01 libnvToolsExt.so.1 -> libnvToolsExt.so.1.0.0
+-rwxr-xr-x. 1 root root     37136 Feb 15 15:01 libnvToolsExt.so.1.0.0
+lrwxrwxrwx. 1 root root        14 Feb 15 15:01 libOpenCL.so -> libOpenCL.so.1
+lrwxrwxrwx. 1 root root        16 Feb 15 15:01 libOpenCL.so.1 -> libOpenCL.so.1.0
+lrwxrwxrwx. 1 root root        18 Feb 15 15:01 libOpenCL.so.1.0 -> libOpenCL.so.1.0.0
+-rw-r--r--. 1 root root     25840 Feb 15 15:01 libOpenCL.so.1.0.0
+drwxr-xr-x. 2 root root      4096 Feb 15 15:01 stubs
+-----
+
+OpenACC Toolkit
+~~~~~~~~~~~~~~~
+
+https://developer.nvidia.com/openacc[+https://developer.nvidia.com/openacc+]
+
+https://developer.nvidia.com/openacc-toolkit[+https://developer.nvidia.com/openacc-toolkit+]
+
+http://www.pgroup.com/products/community.htm?utm_source=nvidia_otk&utm_medium=web_link&utm_term=download[+http://www.pgroup.com/products/community.htm?utm_source=nvidia_otk&utm_medium=web_link&utm_term=download+]
+
+=====
+" A no-cost license to a recent release of the PGI Fortran, C and C++ compilers and tools for multicore CPUs and NVIDIA Tesla GPUs, including all OpenACC, OpenMP and CUDA Fortran features. The PGI Community Edition enables development of performance-portable HPC applications with uniform source code across the most widely used parallel processors and systems.
+=====
+
+Select the +Linux x86_64+ version to obtain:
+
+-----
+pgilinux-2016-1610-x86_64.tar.gz
+-----
+
+Disentagle the file.
+
+-----
+mkdir PGI
+cd PGI
+tar xzvf pgilinux-2016-1610-x86_64.tar.gz
+-----
+
+The disentangled contents are:
+'
+-----
+-r-xr-xr-x. 1 baum baum        206 Oct 19 18:37 documentation.html
+-rwxr-xr-x. 1 baum baum        670 Oct 19 18:41 install
+drwxrwxr-x. 6 baum baum       4096 Oct 19 18:41 install_components
+-rw-rw-r--. 1 baum baum 1226930044 Feb 15 15:22 pgilinux-2016-1610-x86_64.tar.gz
+-----
+
+The +install_components+ subdirectory contains:
+
+-----
+drwxr-xr-x. 3 baum baum      4096 Oct 19 18:37 common
+-rwxr-xr-x. 1 baum baum     36686 Oct 19 18:37 install
+-rwxr-xr-x. 1 baum baum      2008 Oct 19 18:37 install_amd_gpu
+-rwxr-xr-x. 1 baum baum      4391 Oct 19 18:37 install_cuda
+-rwxr-xr-x. 1 baum baum      4798 Oct 19 18:37 install_env
+-rwxr-xr-x. 1 baum baum      2253 Oct 19 18:37 install_java
+-rwxr-xr-x. 1 baum baum      1220 Oct 19 18:37 install_oacc_um
+drwxr-xr-x. 3 baum baum        19 Oct 19 18:37 linux86-64
+-rw-r--r--. 1 baum baum   6893289 Oct 19 18:40 linux86-64.examples.tar.gz
+-rw-r--r--. 1 baum baum 118980484 Oct 19 18:38 linux86-64.pgicuda7.5-pgprof-libnvvp.tar.gz
+-rw-r--r--. 1 baum baum 119342754 Oct 19 18:38 linux86-64.pgicuda8.0-libnvvp.tar.gz
+-rw-r--r--. 1 baum baum 758309123 Oct 19 18:39 linux86-64.pgicuda.tar.gz
+-rw-r--r--. 1 baum baum    133043 Oct 19 18:40 linux86-64.pgioacc-um-eval.tar.gz
+-rw-r--r--. 1 baum baum  18676812 Oct 19 18:40 linux86-64.pgiradeon.tar.gz
+drwxr-xr-x. 2 baum baum       125 Oct 19 18:37 module
+-rw-r--r--. 1 baum baum  22522105 Oct 19 18:40 openmpi-1.10.2_2016_x86_64.tar.gz
+-rwxr-xr-x. 1 baum baum      1797 Oct 19 18:37 postinstall
+-r-xr-xr-x. 1 baum baum     12013 Oct 19 18:37 PrgEnv.pl
+-rw-r--r--. 1 baum baum  12668890 Oct 19 18:40 scalapack-2.0.2_2016_x86_64.tar.gz
+-----
+
+Install the package via:
+
+-----
+su
+./install
+...
+Do you accept these terms? (accept,decline) accept
+
+A network installation will save disk space by having only one copy of the
+compilers and most of the libraries for all compilers on the network, and
+the main installation needs to be done once for all systems on the network.
+
+1  Single system install
+2  Network install
+
+Please choose install option: 1
+
+Please specify the directory path under which the software will be installed.
+The default directory is /opt/pgi, but you may install anywhere you wish,
+assuming you have permission to do so.
+
+Installation directory? [/opt/pgi] /opt/pgi-2006-1610
+
+Note: directory /opt/pgi-2016-1610 was created.
+
+
+************************************************************************
+CUDA Toolkit
+************************************************************************
+This release contains a subset of NVIDIA's CUDA 7.0, CUDA 7.5 and CUDA 8.0
+toolkits configured for use by the PGI Accelerator and CUDA Fortran
+compilers and required by the PGPROF profiler.
+
+More information about CUDA technology can be found at the NVIDIA web site,
+http://www.nvidia.com/object/cuda_home.html
+
+Press enter to continue...
+...
+Do you accept these terms? (accept,decline) accept
+
+The NVIDIA CUDA Toolkit EULA in its entirety is located
+under the 2016/cuda directory
+
+************************************************************************
+AMD
+************************************************************************
+This release contains software components for AMD used by the PGI
+Accelerator compilers.
+
+Press enter to continue...
+...
+Do you accept these terms? (accept,decline) accept
+
+************************************************************************
+JRE
+************************************************************************
+This release of PGI software includes the JAVA JRE. PGI's graphical
+debugger and profiler use components from this package. If you choose not
+to install JAVA, you will be limited to running command line versions of
+pgdbg and pgprof, using the -text option.
+
+The JAVA JRE will be installed into
+
+  /opt/pgi-2016-1610/linux86-64/2016/java
+
+and will not affect applications other than PGI's pgdbg and pgprof.
+
+Press enter to continue...
+...
+Do you accept these terms? (accept,decline) accept
+
+************************************************************************
+OpenACC Unified Memory Evaluation Package
+************************************************************************
+This release contains the PGI OpenACC Unified Memory Evaluation package
+which enables limited use of CUDA Unified Memory from within OpenACC.
+Before using this package, please see the included README file located in
+doc/README_UM_EVAL.txt.
+
+Press enter to continue...
+...
+Do you accept these terms? (accept,decline) accept
+Installing PGI version 16.10 into /opt/pgi-2016-1610
+############################
+
+
+If you use the 2016 directory in your path, you may choose to
+update the links in that directory to point to the 16.10 directory.
+ 
+Do you wish to update/create links in the 2016 directory? (y/n) n
+
+Installing PGI JAVA components into /opt/pgi-2016-1610
+Installing PGI CUDA components into /opt/pgi-2016-1610
+Installing AMD GPU components into /opt/pgi-2016-1610
+Installing PGI OpenACC Unified Memory components into /opt/pgi-2016-1610 ... 
+
+
+************************************************************************
+MPI
+************************************************************************
+This release contains version 1.10.2 of the Open MPI library.
+
+Press enter to continue...
+
+Do you want to install Open MPI onto your system? (y/n) y
+Do you want to enable NVIDIA GPU support in Open MPI? (y/n) y
+
+Installing Open MPI 1.10.2 components into /opt/pgi-2016-1610 ... Done
+
+Generating Environment Modules ... Done
+
+Installing ScaLAPACK 2.0.2 components into /opt/pgi-2016-1610 ... Done
+
+Installing module files for PGI linux86-64 version(s): 16.10
+Done
+
+************************************************************************
+License Key Management
+************************************************************************
+
+NOTICE: A COMMUNITY license key has been installed at
+        /opt/pgi-2016-1610/license.dat
+
+    If you have purchased a license and wish to obtain your permanent
+    license key, or wish to create a Trial license key, answer 'y' to the
+    prompt below to generate the key and configure a local license service.
+
+    A local license service is not required when utilizing a separate license
+    server on your network, or for Starter or Community license keys.  If you
+    already have Starter or Community keys you wish to use, copy them into
+    the file:  /opt/pgi-2016-1610/license.dat
+
+    Please see http://www.pgroup.com/support/licensing.htm for more
+    information about license key types.
+
+
+Do you wish to generate license keys or configure license service? (y/n) n
+The PGI license management script is available at:
+/opt/pgi-2016-1610/linux86-64/16.10/bin/pgi_license_tool
+
+
+Do you want the files in the install directory to be read-only? (y/n) y
+
+Installation complete.
+
+
+If you purchased Support Services, please note that the support
+services to you are limited to the terms described in the file
+/opt/pgi-2016-1610/linux86-64/16.10/doc/SUPPORT_SERVICE.
+
+A copy of this file can also be found on the PGI website, at
+http://www.pgroup.com/support/SUPPORT_SERVICE.
+
+
+Please check the FAQ at http://www.pgroup.com/support/faq.htm for a current
+listing of customer support concerns, including installation, use of PGI
+software, and other questions or problems.
+
+All PGI documentation is available online at http://www.pgroup.com/resources/docs.htm
+-----
+
+
+
+Deep Learning Toolkit
+~~~~~~~~~~~~~~~~~~~~~
+
+https://developer.nvidia.com/deep-learning-software[+https://developer.nvidia.com/deep-learning-software+]
+
+cuDNN
+^^^^^
+
+https://developer.nvidia.com/cudnn[+https://developer.nvidia.com/cudnn+]
+
+=====
+The NVIDIA CUDA® Deep Neural Network library (cuDNN) is a GPU-accelerated library of primitives for deep neural networks. cuDNN provides highly tuned implementations for standard routines such as forward and backward convolution, pooling, normalization, and activation layers. cuDNN is part of the NVIDIA Deep Learning SDK.
+=====
+
+https://developer.nvidia.com/rdp/cudnn-download[+https://developer.nvidia.com/rdp/cudnn-download+]
+
+Choose +Download cuDNN v5.1 (Jan, 20, 2017) for CUDA 8.0+.
+
+Download the following:
+
+-----
+cuDNN User Guide - +CUDNN_Library.pdf+
+cuDNN Install Guide - +cudnn_install.txt+
+cuDNN v5.1 Library for Linux - +cudnn-8.0-linux-x64-v5.1.tgz+
+cuDNN v5.1 Release Notes - +cuDNN_v5.1_ReleaseNotes.pdf+
+-----
+
+Now process these files:
+
+-----
+mkdir CUDNN
+mv cuDNN* cudnn* CUDNN* CUDNN
+cd CUDNN
+tar xzvf cudnn-8.0-linux-x64-v5.1.tgz
+-----
+
+This creates the following directory structure:
+
+-----
+ls -lR cuda
+cuda:
+total 0
+drwxrwxr-x. 2 baum baum  29 Feb 15 15:40 include
+drwxrwxr-x. 2 baum baum 117 Feb 15 15:40 lib64
+
+cuda/include:
+total 100
+-r--r--r--. 1 baum baum 99658 Nov  7 00:37 cudnn.h
+
+cuda/lib64:
+total 150908
+lrwxrwxrwx. 1 baum baum       13 Nov  7 01:00 libcudnn.so -> libcudnn.so.5
+lrwxrwxrwx. 1 baum baum       18 Nov  7 01:00 libcudnn.so.5 -> libcudnn.so.5.1.10
+-rwxr-xr-x. 1 baum baum 84163560 Nov  7 00:47 libcudnn.so.5.1.10
+-rw-r--r--. 1 baum baum 70364814 Nov  7 00:47 libcudnn_static.a
+-----
+
+Put these in the +/opt/cuda-8.0.61+ directory.
+
+-----
+su
+cd cuda/include
+cp -rp * /opt/cuda-8.0.61/include
+cd ../lib64
+cp -rp * /opt/cuda-8.0.61/lib64
+-----
+
+NCCL
+^^^^
+
+https://github.com/NVIDIA/nccl[+https://github.com/NVIDIA/nccl+]
+https://devblogs.nvidia.com/parallelforall/fast-multi-gpu-collectives-nccl/[+https://devblogs.nvidia.com/parallelforall/fast-multi-gpu-collectives-nccl/+]
+
+=====
+NCCL (pronounced "Nickel") is a stand-alone library of standard collective communication routines, such as all-gather, reduce, broadcast, etc., that have been optimized to achieve high bandwidth over PCIe. NCCL supports an arbitrary number of GPUs installed in a single node and can be used in either single- or multi-process (e.g., MPI) applications. 
+=====
+
+Download and build it via:
+
+-----
+git clone https://github.com/NVIDIA/nccl.git
+cd nccl
+make CUDA_HOME=/opt/cuda-8.0.61 test
+-----
+
+GPUOpen Projects
+----------------
+
+APP SDK
+~~~~~~~
+
+=====
+AMD OpenCL™ Accelerated Parallel Processing (APP) technology is a set of advanced hardware and software technologies that enable AMD graphics processing cores (GPU), working in concert with the system’s x86 cores (CPU), to execute heterogeneously to accelerate many applications beyond just graphics. This enables better balanced platforms capable of running demanding computing tasks faster than ever, and sets software developers on the path to optimize for AMD Accelerated Processing Units (APUs). The AMD APP Software Development Kit (SDK) is a complete development platform created by AMD to allow you to quickly and easily develop applications accelerated by AMD APP technology. The SDK provides samples, documentation, and other materials to quickly get you started leveraging accelerated compute using OpenCL™or C++ AMP in your C/C++ application.
+
+AMD APP SDK 3.0 supports OpenCL™ 2.0 with samples highlighting the new features and benefits of OpenCL™ 2.0 – the latest compute API standard from Khronos.  The SDK also includes samples for accelerated libraries such as the Open Source  C++ template library called “Bolt” and the OpenCL™ accelerated OpenCV (Open Computer Vision) library.  This release supports Catalyst Omega 15.7 driver.
+=====
+
+http://developer.amd.com/tools-and-sdks/opencl-zone/amd-accelerated-parallel-processing-app-sdk/[+http://developer.amd.com/tools-and-sdks/opencl-zone/amd-accelerated-parallel-processing-app-sdk/+]
+
+ATMI
+~~~~
+
+=====
+Asynchronous Task and Memory Interface, or ATMI, is a runtime framework and programming model for heterogeneous CPU-GPU systems. It provides a consistent API to create task graphs on CPUs and GPUs (integrated and discrete). ATMI is a declarative programming model, where high-level tasks can be simply described by using a few predefined C-style structures. The task description includes specifying its granularity, dependencies to other tasks, data requirements and so on. The ATMI runtime, based on the task graph, will perform task scheduling and memory management that is optimal for the underlying platform. ATMI provides a rich and flexible user interface so that the end user can relinquish scheduling to the runtime (default behavior) or take full control of scheduling and mapping, if desired. The target audience for ATMI is application programmers or middleware developers for high-level languages.
+=====
+
+http://gpuopen.com/compute-product/atmi/[+http://gpuopen.com/compute-product/atmi/+]
+
+https://github.com/RadeonOpenCompute/atmi[+https://github.com/RadeonOpenCompute/atmi+]
+
+clBLAS
+~~~~~~
+
+=====
+The BLAS portion of clMATH.  The complete set of BLAS level 1, 2 & 3 routines is implemented. Please see Netlib BLAS for the list of supported routines. In addition to GPU devices, the library also supports running on CPU devices to facilitate debugging and multicore programming. APPML 1.12 is the most current generally available pre-packaged binary version of the library available for download for both Linux and Windows platforms.
+
+The primary goal of clBLAS is to make it easier for developers to utilize the inherent performance and power efficiency benefits of heterogeneous computing. clBLAS interfaces do not hide nor wrap OpenCL interfaces, but rather leaves OpenCL state management to the control of the user to allow for maximum performance and flexibility. The clBLAS library does generate and enqueue optimized OpenCL kernels, relieving the user from the task of writing, optimizing and maintaining kernel code themselves.
+
+This requires the AMD APP SDK.
+=====
+
+https://github.com/clMathLibraries/clBLAS[+https://github.com/clMathLibraries/clBLAS+]
+
+
+HcBLAS
+~~~~~~
+
+=====
+The HCC based BLAS Library (hcBLAS), that targets GPU acceleration of the traditional set of BLAS routines on AMD devices.
+=====
+
+https://bitbucket.org/multicoreware/hcblas[+https://bitbucket.org/multicoreware/hcblas+]
+
+
+
+HCC
+~~~
+
+=====
+HCC is an Open Source, Optimizing C++ Compiler for Heterogeneous Compute currently for the ROCm GPU Computing Platform.
+The goal is to implement a compiler that takes a program conforming parallel programming standards such as C++ AMP, HC, C++ 17 ParallelSTL, or OpenMP and transforms it into AMD GCN ISA.
+
+The supported accelerator modes are HC C++ API, C++ AMP, C++ Parallel STL and OpenMP.  
+=====
+
+https://github.com/RadeonOpenCompute/hcc[+https://github.com/RadeonOpenCompute/hcc+]
+
+http://gpuopen.com/tag/hcc/[+http://gpuopen.com/tag/hcc/+]
+
+http://gpuopen.com/compute-product/hcc-heterogeneous-compute-compiler/[+http://gpuopen.com/compute-product/hcc-heterogeneous-compute-compiler/+]
+
+
+HIP
+~~~
+
+=====
+HIP converts CUDA to portable C++ code.
+The same source code can be compiled to run on NVIDIA or AMD GPUs.
+New projects can be developed directly in the portable HIP C++ language and can run on either NVIDIA or AMD platforms. Additionally, HIP provides porting tools which make it easy to port existing CUDA codes to the HIP layer, with no loss of performance as compared to the original CUDA application. HIP is not intended to be a drop-in replacement for CUDA, and developers should expect to do some manual coding and performance tuning work to complete the port.
+=====
+
+https://github.com/GPUOpen-ProfessionalCompute-Tools/HIP[+https://github.com/GPUOpen-ProfessionalCompute-Tools/HIP+]
+
+https://github.com/GPUOpen-ProfessionalCompute-Tools/HIP/blob/master/docs/markdown/hip_faq.md[+https://github.com/GPUOpen-ProfessionalCompute-Tools/HIP/blob/master/docs/markdown/hip_faq.md+]
+
+Tools and Ecosystem
+-------------------
+
+GPU-Accelerated Libraries
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+accelerate
+^^^^^^^^^^
+
+=====
+An embedded array language for computations for high-performance computing in Haskell. Computations on multi-dimensional, regular arrays are expressed in the form of parameterised collective operations, such as maps, reductions, and permutations. These computations may then be online compiled and executed on a range of architectures.  There is a CUDA backend that generates code for CUDA-capable NVDIA GPUs.
+=====
+
+http://hackage.haskell.org/package/accelerate[+http://hackage.haskell.org/package/accelerate+]
+
+AMGCL
+^^^^^
+
+=====
+AMGCL is a header-only C++ library for solving large sparse linear systems with algebraic multigrid (AMG) method. AMG is one of the most effective iterative methods for solution of equation systems arising, for example, from discretizing PDEs on unstructured grids. The method can be used as a black-box solver for various computational problems, since it does not require any information about the underlying geometry. AMG is often used not as a standalone solver but as a preconditioner within an iterative solver (e.g. Conjugate Gradients, BiCGStab, or GMRES).
+
+AMGCL builds the AMG hierarchy on a CPU and then transfers it to one of the provided backends. This allows for transparent acceleration of the solution phase with help of OpenCL, CUDA, or OpenMP technologies. Users may provide their own backends which enables tight integration between AMGCL and the user code.
+=====
+
+https://github.com/ddemidov/amgcl[+https://github.com/ddemidov/amgcl+]
+
+AmgX
+^^^^
+
+=====
+AmgX provides a simple path to accelerated core solver technology on NVIDIA GPUs. AmgX provides up to 10x acceleration to the computationally intense linear solver portion of simulations, and is especially well suited for implicit unstructured methods.
+=====
+
+https://developer.nvidia.com/amgx[+https://developer.nvidia.com/amgx+]
+
+
+ArrayFire
+^^^^^^^^^
+
+=====
+ArrayFire is a comprehensive, open source function library with interfaces for C, C++, Java, R and Fortran. It integrates with any CUDA application, and contains an array-based API for easy programmability. The ArrayFire library contains the popular "GFOR" for-loop for running all loop iterations simultaneously on the GPU. It is designed for use on the full range of systems, from single GPU systems to large multi-GPU supercomputers. The ArrayFire Library is fully open source, and can be accessed via the ArrayFire website.
+=====
+
+https://developer.nvidia.com/arrayfire[+https://developer.nvidia.com/arrayfire+]
+
+https://arrayfire.com/[+https://arrayfire.com/+]
+
+ASL
+^^^
+
+=====
+Advanced Simulation Library (ASL) is a free and open source hardware accelerated multiphysics simulation platform (and an extensible general purpose tool for solving Partial Differential Equations). Its computational engine is written in OpenCL and utilizes matrix-free solution techniques which enable extraordinarily high performance, memory efficiency and deployability on a variety of massively parallel architectures, ranging from inexpensive FPGAs, DSPs and GPUs up to heterogeneous clusters and supercomputers. The engine is hidden entirely behind simple C++ classes, so that no OpenCL knowledge is required from application programmers. Mesh-free, immersed boundary approach allows one to move from CAD directly to simulation drastically reducing pre-processing efforts and amount of potential errors. ASL can be used to model various coupled physical and chemical phenomena and employed in a multitude of fields: computational fluid dynamics, virtual sensing, industrial process data validation and reconciliation, image-guided surgery, computer-aided engineering, design space exploration, crystallography, etc..
+=====
+
+http://asl.org.il/[+http://asl.org.il/+]
+
+clfortran
+^^^^^^^^^
+
+=====
+CLFORTRAN is a Fortran interface to OpenCL, written in pure Fortran and compatible with OpenCL 1.2.
+The API CLFORTRAN exposes is identical to what developers will find with the C interface.
+
+To use CLFORTRAN compiler should support Fortran 2002-2003 extensions, especially ISO_C_BINDING.
+Most current compilers have support for this feature, including GNU, Intel and IBM. CLFORTRAN was compiled and tested with the following compilers: - gfortran (4.8.2) - ifort (13.1.1) But previous versions conforming to Fortran 2003 should work as well.
+=====
+
+https://github.com/cass-support/clfortran[+https://github.com/cass-support/clfortran+]
+
+CULA
+^^^^
+
+=====
+CULA is a set of GPU-accelerated linear algebra libraries utilizing the NVIDIA CUDA parallel computing architecture to dramatically improve the computation speed of sophisticated mathematics.
+=====
+
+http://www.culatools.com/[+http://www.culatools.com/+]
+
+DualSPHysics
+^^^^^^^^^^^^
+
+=====
+DualSPHysics is based on the Smoothed Particle Hydrodynamics model named SPHysics (www.sphysics.org).
+
+The code is developed to study free-surface flow phenomena where Eulerian methods can be difficult to apply, such as waves or impact of dam-breaks on off-shore structures. DualSPHysics is a set of C++, CUDA and Java codes designed to deal with real-life engineering problems.
+=====
+
+http://dual.sphysics.org/[+http://dual.sphysics.org/+]
+
+http://dual.sphysics.org/index.php/sphysics-project/[+http://dual.sphysics.org/index.php/sphysics-project/+]
+
+https://github.com/sanguinariojoe/aquagpusph[+https://github.com/sanguinariojoe/aquagpusph+]
+
+http://canal.etsin.upm.es/aquagpusph/[+http://canal.etsin.upm.es/aquagpusph/+]
+
+ELPA
+^^^^
+
+=====
+Obtaining the eigenvalues and eigenvectors of large matrices is a key problem in electronic structure theory and many other areas of computational science. The computational effort formally scales as O(N3) with the size of the investigated problem, N (e.g. the electron count in electronic structure theory), and thus often defines the system size limit that practical calculations cannot overcome. In many cases, more than just a small fraction of the possible eigenvalue/eigenvector pairs is needed, so that iterative solution strategies that focus only on a few eigenvalues become ineffective. Likewise, it is not always desirable or practical to circumvent the eigenvalue solution entirely. We here review some current developments regarding dense eigenvalue solvers and then focus on the Eigenvalue soLvers for Petascale Applications (ELPA) library, which facilitates the efficient algebraic solution of symmetric and Hermitian eigenvalue problems for dense matrices that have real-valued and complex-valued matrix entries, respectively, on parallel computer platforms. ELPA addresses standard as well as generalized eigenvalue problems, relying on the well documented matrix layout of the Scalable Linear Algebra PACKage (ScaLAPACK) library but replacing all actual parallel solution steps with subroutines of its own. For these steps, ELPA significantly outperforms the corresponding ScaLAPACK routines and proprietary libraries that implement the ScaLAPACK interface (e.g. Intel's MKL). The most time-critical step is the reduction of the matrix to tridiagonal form and the corresponding backtransformation of the eigenvectors. ELPA offers both a one-step tridiagonalization (successive Householder transformations) and a two-step transformation that is more efficient especially towards larger matrices and larger numbers of CPU cores. ELPA is based on the MPI standard, with an early hybrid MPI-OpenMPI implementation available as well. Scalability beyond 10 000 CPU cores for problem sizes arising in the field of electronic structure theory is demonstrated for current high-performance computer architectures such as Cray or Intel/Infiniband.
+
+The most recent github version of the ELPA source code includes CUDA capablities.
+=====
+
+https://gitlab.mpcdf.mpg.de/elpa/elpa[+https://gitlab.mpcdf.mpg.de/elpa/elpa+]
+
+http://elpa.mpcdf.mpg.de/about[+http://elpa.mpcdf.mpg.de/about+]
+
+FortranCL
+^^^^^^^^^
+
+=====
+FortranCL is an OpenCL interface for Fortran 90. It allows programmers to call the OpenCL parallel programming framework directly from Fortran, so developers can accelerate their Fortran code using graphical processing units (GPU) and other accelerators.
+
+The interface is designed to be as close to C OpenCL interface as possible, while written in native Fortran 90 with type checking. It was originally designed as an OpenCL interface to be used by the Octopus code.
+
+The interface is not complete but provides all the basic calls required to write a full Fortran 90 OpenCL program.
+=====
+
+https://code.google.com/archive/p/fortrancl/[+https://code.google.com/archive/p/fortrancl/+]
+
+Futhark
+^^^^^^^
+
+=====
+Futhark is a small programming language designed to be compiled to efficient GPU code. It is a statically typed, data-parallel, and purely functional array language, and comes with a heavily optimising ahead-of-time compiler that generates GPU code via OpenCL. Futhark is not designed for graphics programming, but instead uses the compute power of the GPU to accelerate data-parallel array computations. We support regular nested data-parallelism, as well as a form of imperative-style in-place modification of arrays, while still preserving the purity of the language via the use of a uniqueness type system.
+
+Futhark is not intended to replace your existing languages. Our intended use case is that Futhark is only used for relatively small but compute-intensive parts of an application. The Futhark compiler generates code that can be easily integrated with non-Futhark code. For example, you can compile a Futhark program to a Python module that internally uses PyOpenCL to execute code on the GPU, yet looks like any other Python module from the outside (more on this here). The Futhark compiler will also generate more conventional C code, which can be accessed from any language with a basic FFI.
+=====
+
+http://futhark-lang.org/[+http://futhark-lang.org/+]
+
+Halide
+^^^^^^
+
+=====
+Halide is a new programming language designed to make it easier to write high-performance image processing code on modern machines. Its current front end is embedded in C++. Compiler targets include x86/SSE, ARM v7/NEON, CUDA, Native Client, and OpenCL.
+=====
+
+http://halide-lang.org/[+http://halide-lang.org/+]
+
+hedge
+^^^^^
+
+=====
+An unstructured, high-order, parallel Discontinuous Galerkin (DG) code that I am developing as part my PhD project. hedge's design is focused on two things: being fast and easy to use. While the need for speed dictates implementation in a low level language, these same low-level languages become quite cumbersome at a higher level of abstraction. This is where the "h" in hedge comes from; it takes a hybrid approach. While a small core is written in C++ for speed, all user-visible functionality is driven from Python.
+
+It can use both MPI and CUDA.
+=====
+
+https://mathema.tician.de/software/hedge/[+https://mathema.tician.de/software/hedge/+]
+
+HPL-GPU
+^^^^^^^
+
+=====
+HPL-GPU is a largely rewritten version of the traditional High Performance Linpack as published on netlib.org tuned for heterogeneous systems with GPUs. It has been modified to make use of modern multi-core CPUs, enhanced lookahead and a high performance DGEMM for AMD GPUs. It can use AMD CAL, OpenCL, and CUDA as GPU backend. This version of Linpack differs from HPL in multiple aspects, this includes build requirements and configuration, run configuration and license. All of these are covered in this wiki. A lot of technical details regarding the modifications can be found in the references section.
+
+This software requires the CALDGEMM library. It assumes a link to caldgemm inside its top directory and this link must be called caldgemm. CALDGEMM provides backends for CAL, OPENCL, CUDA, CPU. The default is OpenCL and OpenCL is in the following assumed. 
+Both, HPL-GPU and CALDGEMM require a BLAS library. Supported BLAS libraries include Intel MKL, GotoBLAS2, and AMD ACML.
+=====
+
+https://github.com/davidrohr/hpl-gpu/wiki[+https://github.com/davidrohr/hpl-gpu/wiki+]
+
+https://github.com/davidrohr/caldgemm[+https://github.com/davidrohr/caldgemm+]
+
+libFLAME
+^^^^^^^^
+
+=====
+LibFLAME is a portable library for dense matrix computations, providing much of the functionality present in LAPACK. In fact, libflame includes a compatibility layer, FLAPACK, which includes a complete LAPACK implementation.
+
+LibFLAME is a high performance dense linear algebra library that is the result of the FLAME methodology for systematically developing dense linear algebra libraries. The FLAME methodology is radically different from the LINPACK/LAPACK approach that dates back to the 1970s.
+
+Libflame supports parallel execution using multiple GPUs through the SuperMatrix runtime system. By linking libflame with CUBLAS for the execution of BLAS routines on a single GPU, the SuperMatrix runtime system schedules operations to each GPU and manages the explicit movement of data.
+=====
+
+http://gpuopen.com/compute-product/libflame/[+http://gpuopen.com/compute-product/libflame/+]
+
+https://github.com/flame/libflame[+https://github.com/flame/libflame+]
+
+http://www.cs.utexas.edu/~flame/web/[+http://www.cs.utexas.edu/~flame/web/+]
+
+
+MAGMA
+^^^^^
+
+=====
+MAGMA is a collection of next generation linear algebra (LA) GPU accelerated
+libraries designed and implemented by the team that developed LAPACK and ScaLAPACK.
+MAGMA is for heterogeneous GPU-based architectures, it supports
+interfaces to current LA packages and standards, e.g., LAPACK and BLAS,
+to allow computational scientists to effortlessly port any LA-relying
+software components. The main benefits of using MAGMA are that it can
+enable applications to fully exploit the power of current heterogeneous
+systems of multi/manycore CPUs and multi-GPUs, and deliver the fastest
+possible time to an accurate solution within given energy constraints.
+=====
+
+https://developer.nvidia.com/magma[+https://developer.nvidia.com/magma+]
+
+http://icl.cs.utk.edu/magma/software/[+http://icl.cs.utk.edu/magma/software/+]
+
+OpenMPC
+^^^^^^^
+
+=====
+We proposes a new programming interface, called OpenMPC, which consists of a standard OpenMP API plus a new set of directives and environment variables to control important CUDA-related parameters and optimizations. OpenMPC addresses two important issues on GPGPU programming: programmability and tunability. OpenMPC as a front-end programming model provides programmers with abstractions of the complex CUDA programming model and high-level controls over various optimizations and CUDA-related parameters.
+=====
+
+https://engineering.purdue.edu/paramnt/OpenMPC/[+https://engineering.purdue.edu/paramnt/OpenMPC/+]
+
+OpenNN
+^^^^^^
+
+=====
+OpenNN is an open source class library written in C++ programming language which implements neural networks, a main area of machine learning research. 
+The library implements any number of layers of non-linear processing units for supervised learning. This deep architecture allows the design of neural networks with universal approximation properties 
+The main advantage of OpenNN is its high performance. It is developed in C++ for better memory management and higher processing speed, and implements CPU parallelization by means of OpenMP and GPU acceleration with CUDA. 
+=====
+
+http://www.opennn.net/[+http://www.opennn.net/+]
+
+https://github.com/Artelnics/OpenNN[+https://github.com/Artelnics/OpenNN+]
+
+Orio
+^^^^
+
+=====
+Orio is an open-source extensible framework for the definition of domain-specific languages and generation of optimized code for multiple architecture targets, including support for empirical autotuning of the generated code.
+
+Orio is a Python framework for transformation and automatically tuning the performance of codes written in different source and target languages, including transformations from a number of simple languages (e.g., a restricted subset of C) to C, Fortran, CUDA, and OpenCL targets. The tool generates many tuned versions of the same operation using different optimization parameters, and performs an empirical search for selecting the best among multiple optimized code variants.
+=====
+
+http://brnorris03.github.io/Orio/[+http://brnorris03.github.io/Orio/+]
+
+Paralution
+^^^^^^^^^^
+
+=====
+PARALUTION contains Krylov subspace solvers (CR, CG, BiCGStab, GMRES, IDR), Multigrid (GMG, AMG), Deflated PCG, Fixed-point iteration schemes, Mixed-precision schemes and fine-grained parallel preconditioners based on splitting, ILU factorization with levels, multi-elimination ILU factorization, additive Schwarz and approximate inverse. The library also provides iterative eigenvalue solvers.
+
+The library can be compiled under Linux/Unix-like , Windows and Mac OS. PARALUTION provides multi-core CPU/Host (OpenMP), NVIDIA GPU (CUDA, OpenCL), AMD GPU (OpenCL), Intel Xeon Phi/MIC (OpenCL, OpenMP/offload mode) support, including VS (Visual Studio) gcc (GNU C++) and icc (Intel C++) compilers.
+=====
+
+http://www.paralution.com/[+http://www.paralution.com/+]
+
+Parboil
+^^^^^^^
+
+=====
+ The Parboil benchmarks are a set of throughput computing applications useful for studying the performance of throughput computing architecture and compilers. The name comes from the culinary term for a partial cooking process, which represents our belief that useful throughput computing benchmarks must be "cooked", or preselected to implement a scalable algorithm with fine-grained parallel tasks. But useful benchmarks for this field cannot be "fully cooked", because the architectures and programming models and supporting tools are evolving rapidly enough that static benchmark codes will lose relevance very quickly.
+
+We have collected benchmarks from throughput computing application researchers in many different scientific and commercial fields including image processing, biomolecular simulation, fluid dynamics, and astronomy. Each benchmark includes several implementations. Some implementations we provide as readable base implementations from which new optimization efforts can begin, and others as examples of the current state-of-the-art targeting specific CPU and GPU architectures. As we continue to optimize these benchmarks for new and existing architectures ourselves, we will also gladly accept new implementations and benchmark contributions from developers to recognize those at the frontier of performance optimization on each architecture. 
+=====
+
+http://impact.crhc.illinois.edu/parboil/parboil.aspx[+http://impact.crhc.illinois.edu/parboil/parboil.aspx+]
+
+https://github.com/abduld/Parboil[+https://github.com/abduld/Parboil+]
+
+PENCIL
+^^^^^^
+
+=====
+A platform-neutral compute intermediate language (PENCIL) for productive and performance-portable accelerator programming. 
+The PENCIL language is meant to facilitate automatic parallelization and optimization for execution on
+multi-threaded SIMD hardware.
+=====
+
+https://github.com/carpproject/pencil[+https://github.com/carpproject/pencil+]
+
+https://arxiv.org/abs/1302.5586[+https://arxiv.org/abs/1302.5586+]
+
+PLASMA
+^^^^^^
+
+=====
+PLASMA is a software package for solving problems in dense linear algebra using multicore processors and Xeon Phi coprocessors. PLASMA provides implementations of state-of-the-art algorithms using cutting-edge task scheduling techniques. PLASMA currently offers a collection of routines for solving linear systems of equations, least squares problems, eigenvalue problems, and singular value problems.
+=====
+
+https://bitbucket.org/icl/plasma/[+https://bitbucket.org/icl/plasma/+]
+
+pocl
+^^^^
+
+=====
+Portable Computing Language (pocl) aims to become a MIT-licensed open source implementation of the OpenCL standard which can be easily adapted for new targets and devices, both for homogeneous CPU and heterogeneous GPUs/accelerators.
+
+pocl uses Clang as an OpenCL C frontend and LLVM for the kernel compiler implementation, and as a portability layer. Thus, if your desired target has an LLVM backend, it should be able to get OpenCL support easily by using pocl.
+=====
+
+http://portablecl.org/[+http://portablecl.org/+]
+
+https://github.com/pocl/pocl[+https://github.com/pocl/pocl+]
+
+PyCUDA
+^^^^^^
+
+=====
+PyCUDA lets you access Nvidia‘s CUDA parallel computation API from Python. 
+=====
+
+https://mathema.tician.de/software/pycuda/[+https://mathema.tician.de/software/pycuda/+]
+
+PyOpenCL
+^^^^^^^^
+
+=====
+PyOpenCL lets you access the OpenCL parallel computation API from Python.
+=====
+
+https://mathema.tician.de/software/pyopencl/[+https://mathema.tician.de/software/pyopencl/+]
+
+Rodinia
+^^^^^^^
+
+=====
+A vision of heterogeneous computer systems that incorporate diverse accelerators and automatically select the best
+computational unit for a particular task is widely shared among researchers and many industry analysts; however,
+there are no agreed-upon benchmarks to support the research needed in the development of such a platform. There
+are many suites for parallel computing on general-purpose CPU architectures, but accelerators fall into a gap that is
+not covered by previous benchmark development. Rodinia is released to address this concern. 
+=====
+
+http://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/Rodinia:Accelerating_Compute-Intensive_Applications_with_Accelerators[+http://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/Rodinia:Accelerating_Compute-Intensive_Applications_with_Accelerators+]
+
+http://lava.cs.virginia.edu/Rodinia/download_links.htm[+http://lava.cs.virginia.edu/Rodinia/download_links.htm+]
+
+Tensorflow
+^^^^^^^^^^
+
+=====
+TensorFlow™ is an open source software library for numerical computation using data flow graphs. Nodes in the graph represent mathematical operations, while the graph edges represent the multidimensional data arrays (tensors) communicated between them. The flexible architecture allows you to deploy computation to one or more CPUs or GPUs in a desktop, server, or mobile device with a single API.
+=====
+
+https://github.com/tensorflow/tensorflow[+https://github.com/tensorflow/tensorflow+]
+
+https://www.tensorflow.org/[+https://www.tensorflow.org/+]
+
+https://keras.io/[+https://keras.io/+]
+
+Theano
+^^^^^^
+
+=====
+Theano is a Python library that lets you to define, optimize, and evaluate mathematical expressions, especially ones with multi-dimensional arrays (numpy.ndarray). Using Theano it is possible to attain speeds rivaling hand-crafted C implementations for problems involving large amounts of data. It can also surpass C on a CPU by many orders of magnitude by taking advantage of recent GPUs.
+
+Theano combines aspects of a computer algebra system (CAS) with aspects of an optimizing compiler. It can also generate customized C code for many mathematical operations. This combination of CAS with optimizing compilation is particularly useful for tasks in which complicated mathematical expressions are evaluated repeatedly and evaluation speed is critical. For situations where many different expressions are each evaluated once Theano can minimize the amount of compilation/analysis overhead, but still provide symbolic features such as automatic differentiation.
+=====
+
+http://deeplearning.net/software/theano/[+http://deeplearning.net/software/theano/+]
+
+https://github.com/Theano/Theano[+https://github.com/Theano/Theano+]
+
+https://keras.io/[+https://keras.io/+]
+
+Thrust
+^^^^^^
+
+Part of the CUDA Toolkit.
+
+=====
+Thrust is a powerful library of parallel algorithms and data structures. Thrust provides a flexible, high-level interface for GPU programming that greatly enhances developer productivity. Using Thrust, C++ developers can write just a few lines of code to perform GPU-accelerated sort, scan, transform, and reduction operations orders of magnitude faster than the latest multi-core CPUs. For example, the thrust::sort algorithm delivers 5x to 100x faster sorting performance than STL and TBB. 
+=====
+
+https://developer.nvidia.com/thrust[+https://developer.nvidia.com/thrust+]
+
+Torch
+^^^^^
+
+=====
+Torch is an open source machine learning library, a scientific computing framework, and a script language based on the Lua programming language.[3] It provides a wide range of algorithms for deep machine learning, and uses the scripting language LuaJIT, and an underlying C implementation.
+The core package of Torch is torch. It provides a flexible N-dimensional array or Tensor, which supports basic routines for indexing, slicing, transposing, type-casting, resizing, sharing storage and cloning. This object is used by most other packages and thus forms the core object of the library. The Tensor also supports mathematical operations like max, min, sum, statistical distributions like uniform, normal and multinomial, and BLAS operations like dot product, matrix-vector multiplication, matrix-matrix multiplication, matrix-vector product and matrix product.
+
+At the heart of Torch are the popular neural network and optimization libraries which are simple to use, while having maximum flexibility in implementing complex neural network topologies. You can build arbitrary graphs of neural networks, and parallelize them over CPUs and GPUs in an efficient manner.
+=====
+
+http://torch.ch/[+http://torch.ch/+]
+
+https://github.com/torch[+https://github.com/torch+]
+
+https://github.com/torch/torch7/wiki/Cheatsheet[+https://github.com/torch/torch7/wiki/Cheatsheet+]
+
+https://github.com/hughperkins/pytorch[+https://github.com/hughperkins/pytorch+]
+
+ViennaCL
+^^^^^^^^
+
+=====
+ViennaCL is a free open-source linear algebra library for computations on many-core architectures (GPUs, MIC) and multi-core CPUs. The library is written in C++ and supports CUDA, OpenCL, and OpenMP (including switches at runtime). 
+A Python wrapper is available.
+=====
+
+http://viennacl.sourceforge.net/[+http://viennacl.sourceforge.net/+]
+
+VirtualCL
+^^^^^^^^^
+
+=====
+VirtualCL (VCL) cluster platform is a wrapper for OpenCL™ that allows most unmodified applications to transparently utilize multiple OpenCL devices in a cluster as if all the devices are local.
+=====
+
+http://www.mosix.org/txt_vcl.html[+http://www.mosix.org/txt_vcl.html+]
+
+
+
+
+
+
