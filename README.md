@@ -11,6 +11,8 @@ A repository for the various documents - brobdingnagian and otherwise - I mainta
 
 **irods.txt** - An overview - including installation details - of the [iRODS](http://irods.org/) distributed filesystem.
 
+**machines.txt** - A summary of the hardware and software characteristics of our machines.
+
 **nam_grd.txt** - Details about the grids used in the NAM/NARR atmospheric circulation models.
 
 **netcdf_recipes.txt** - Tips and tricks about how to use various NetCDF-related software.
