@@ -13,6 +13,8 @@ A repository for the various documents - brobdingnagian and otherwise - I mainta
 
 **nam_grd.txt** - Details about the grids used in the NAM/NARR atmospheric circulation models.
 
+**netcdf_recipes.txt** - Tips and tricks about how to use various NetCDF-related software.
+
 **owgis.txt** - Details about the [OWGIS](http://owgis.org/) server and its use in the [Deep-C Project](http://viewer.coaps.fsu.edu/DeepCProject/mapviewer).
 
 **papers.txt** - A mildly organized bibliography of interesting papers/books/articles/etc. with abstracts.
