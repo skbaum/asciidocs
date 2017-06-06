@@ -50,8 +50,11 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 mysql>
 -----
 
+Database Commands
+~~~~~~~~~~~~~~~~~
+
 Check for Database Names
-~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 -----
 SHOW DATABASES;
@@ -68,14 +71,17 @@ SHOW DATABASES;
 -----
 
 Select a Database to Use
-~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 -----
 use CAGES;
 -----
 
+Table Commands
+~~~~~~~~~~~~~~
+
 Show the Tables in the Database
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 -----
 show TABLES;
@@ -104,7 +110,7 @@ show TABLES;
 -----
 
 Change a Table Name
-~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^
 
 Use backticks for names with spaces.
 
@@ -112,22 +118,8 @@ Use backticks for names with spaces.
 rename table `Texas_CPUE` to Texas_CPUE;
 -----
 
-Change a Column Name
-~~~~~~~~~~~~~~~~~~~~
-
------
-alter table Texas_CPUE change `Bay Code` Bay_Code int(11);
------
-
-List Columns in Table
-~~~~~~~~~~~~~~~~~~~~~
-
------
-describe Texas_CPUE;
------
-
 List Rows of Table
-~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^
 
 -----
 select * from Texas_SubBays;
@@ -140,47 +132,55 @@ select * from Texas_SubBays limit 5;
 -----
 
 Find Total Number of Rows in Table
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 -----
 select count(*) from Texas_CPUE;
 -----
 
-Add a Column to a Table
-~~~~~~~~~~~~~~~~~~~~~~~
-
-This is explained at:
-
-http://www.tech-recipes.com/rx/378/add-a-column-to-an-existing-mysql-table/[http://www.tech-recipes.com/rx/378/add-a-column-to-an-existing-mysql-table/]
-
------
-alter table CAGES add longitude varchar(100) after latitude;
------
-
 Delete a Table
-~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^
 
 -----
 drop table Texas_CPUE_New;
 -----
 
-Grant Database Privileges to a Remote User
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Clone a Table
+^^^^^^^^^^^^^
+
+First you recreate the structure of the table to be cloned, and then
+you populate that structure.
 
 -----
-grant all privileges on CAGES2.* to baum@165.91.85.30;
-grant all privileges on CAGES2.* to baum@165.91.85.30 identified by 'password';
+create table CAGES_Texas_IOOS_Biology_10 like CAGES_Texas_IOOS_Biology;
+insert CAGES_Texas_IOOS_Biology_10 select * from CAGES_Texas_IOOS_Biology;
+-----
+
+Remove All Rows from a Table
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This will delete all the data in the table and return the number
+of rows deleted.
+
+-----
+delete from CAGES_Texas_IOOS_Biology_10;
+-----
+
+This will quickly delete all the data in the table.
+
+-----
+truncate table CAGES_Texas_IOOS_Biology_10;
 -----
 
 Create an Index for a Table
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 -----
 create index name_index on table(name);
 -----
 
 Show the Index for a Table
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 -----
 show index from Texas_Trawls;
@@ -216,35 +216,109 @@ yields:
 2 rows in set (0.00 sec)
 -----
 
-Clone a Table
-~~~~~~~~~~~~~
 
-First you recreate the structure of the table to be cloned, and then
-you populate that structure.
+Column Commands
+~~~~~~~~~~~~~~~
 
------
-create table CAGES_Texas_IOOS_Biology_10 like CAGES_Texas_IOOS_Biology;
-insert CAGES_Texas_IOOS_Biology_10 select * from CAGES_Texas_IOOS_Biology;
------
+Add a Column to a Table
+^^^^^^^^^^^^^^^^^^^^^^^
 
-Remove All Rows from a Table
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+This is explained at:
 
-This will delete all the data in the table and return the number
-of rows deleted.
+http://www.tech-recipes.com/rx/378/add-a-column-to-an-existing-mysql-table/[http://www.tech-recipes.com/rx/378/add-a-column-to-an-existing-mysql-table/]
 
 -----
-delete from CAGES_Texas_IOOS_Biology_10;
+alter table CAGES add longitude varchar(100) after latitude;
 -----
 
-This will quickly delete all the data in the table.
+List Columns in Table
+^^^^^^^^^^^^^^^^^^^^^
 
 -----
-truncate table CAGES_Texas_IOOS_Biology_10;
+describe Texas_CPUE;
+-----
+
+Change a Column Name
+^^^^^^^^^^^^^^^^^^^^
+
+-----
+alter table Texas_CPUE change `Bay Code` Bay_Code int(11);
+-----
+
+Change the Datatype in a Column
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+http://stackoverflow.com/questions/1356866/how-do-i-change-the-data-type-for-a-column-in-mysql[+http://stackoverflow.com/questions/1356866/how-do-i-change-the-data-type-for-a-column-in-mysql+]
+
+You only have to specify the new datatype, e.g. INTEGER in the following:
+
+-----
+ALTER TABLE tablename MODIFY columnname INTEGER;
+-----
+
+or in the real world:
+
+-----
+alter table CAGES_Texas_Trawls_Lengths_IOOS_Standard modify minimumDepthInMeters double;
+-----
+
+Privileges
+~~~~~~~~~~
+
+Grant Database Privileges to a Remote User
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+-----
+grant all privileges on CAGES2.* to baum@165.91.85.30;
+grant all privileges on CAGES2.* to baum@165.91.85.30 identified by 'password';
+-----
+
+List Users and Their Privileges
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+-----
+select user,host from mysql.user;
+-----
+
+Datatypes and Manipulations
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Change a TIMESTAMP into a VARCHAR with String Modification
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+We want to change, e.g. 
+
+-----
+2013-03-13 21:38:35
+-----
+
+into, e.g.
+
+-----
+2013-03-13T21:38:35Z
+-----
+
+First, we change the initial string from a TIMESTAMP variable
+into a VARCHAR variable via:
+
+-----
+alter table CAGES_Texas_Trawls_Lengths_IOOS_Standard modify modified varchar(65);
+-----
+
+Then, we insert the T via:
+
+-----
+update CAGES_Texas_Trawls_Lengths_IOOS_Standard set modified = replace(modified,' ','T');
+-----
+
+Then, we append a Z to this string via:
+
+-----
+update CAGES_Texas_Trawls_Lengths_IOOS_Standard set modified = concat(modified,'Z');
 -----
 
 Prepend Days/Months/Years with Zeros
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 -----
 ALTER TABLE `table` CHANGE `zip` `zip` CHAR(5); #changes type
@@ -252,7 +326,7 @@ UPDATE table SET `zip`=LPAD(`zip`, 5, '0'); #pads everything
 -----
 
 Data Types
-~~~~~~~~~~
+^^^^^^^^^^
 
 These are described at:
 
@@ -311,7 +385,7 @@ SET	        Similar to ENUM except each column may have more than one of the
 -----
 
 Mapping MySQL Datatypes Into Java
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 See
 http://www.roseindia.net/jdbc/jdbc-mysql/mapping-mysql-data-types-in-java.shtml[http://www.roseindia.net/jdbc/jdbc-mysql/mapping-mysql-data-types-in-java.shtml].
@@ -341,7 +415,7 @@ TIMESTAMP 	java.sql.Tiimestamp
 -----
 
 Create a Table with Columns with Specified Datatypes
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This is explained at:
 
@@ -372,7 +446,7 @@ OccurrenceRemarks text
 -----
 
 PostgreSQL vs. MySQL Data Types
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 These are compared at:
 
@@ -380,9 +454,11 @@ These are compared at:
 http://sidu.sourceforge.net/sidu/data-type-mapping.php
 -----
 
+Database File Backup and Manipulation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Shrinking ibdata1
-~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^
 
 This is described at:
 
@@ -418,8 +494,34 @@ and recreate it.  This is done via the following procedure:
 ** +exit+
 ** +mysql -u root -ppasswd CAGES < cages2_backup.sql+
 
+Optimizations
+~~~~~~~~~~~~~
+
+Optimizing MySQL for Large Databases
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+See
+http://linuxadminzone.com/optimize-mysql-on-a-large-database-server/[+http://linuxadminzone.com/optimize-mysql-on-a-large-database-server/+]:
+
+. Use the +my-huge.cnf+ configuration file if you have more than 2GB of RAM.
+
+. Add the following to the configuration file:
+
+-----
+        max_connections = 1000
+        query_cache_size = 128M
+        table_cache = 2048M
+        open_files_limit = 2000
+-----
+
+See
+http://www.biblibre.com/en/blog/entry/mysql-default-config-and-very-large-koha-database[+http://www.biblibre.com/en/blog/entry/mysql-default-config-and-very-large-koha-database+]:
+
+Errors
+~~~~~~
+
 Error Message +InnoDB: Could not open or create data files+
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A remedy for this can be found at:
 
@@ -439,6 +541,38 @@ which is detailed below:
 
 * reload the data (as seen in the immediately previous section)
 
+Checking Remote MySQL Database with Python
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+From barataria we check the connection to gcoos1:
+
+-----
+import MySQLdb
+db = MySQLdb.connect(host="gcoos1.tamu.edu",user="baum",passwd="password",db="CAGES")
+cursor = db.cursor()
+sql = "SELECT * FROM Texas_Bays"
+cursor.execute(sql)
+results = cursor.fetchall()
+for row in results:
+	print row[0],row[1]
+   ....:     
+1 SABINE LAKE
+2 GALVESTON BAY
+3 MATAGORDA BAY
+4 SAN ANTONIO BAY
+5 ARANSAS BAY
+6 CORPUS CHRISTI BAY
+7 UPPER LAGUNA MADRE
+8 LOWER LAGUNA MADRE
+9 EAST MATAGORDA BAY
+11 CEDAR LAKES
+17 off Sabine Lake
+18 off Galveston-Freeport
+19 off Matagorda-San Antonio-Aransas
+20 off Corpus Christi-Upper Laguna Madre
+21 off upper Laguna Madre-lower Laguna Madre
+-----
+
 CAGES Database Modifications
 ----------------------------
 
@@ -447,28 +581,6 @@ CAGES Database Modifications
 . Variable name +Length (Units)+ changed to +Length_Units+.
 
 . Use the +OPTIMIZE TABLE+ command.
-
-Optimizing MySQL for Large Databases
-------------------------------------
-
-See
-http://linuxadminzone.com/optimize-mysql-on-a-large-database-server/[+http://linuxadminzone.com/optimize-mysql-on-a-large-database-server/+]:
-
-. Use the +my-huge.cnf+ configuration file if you have more than 2GB of RAM.
-
-. Add the following to the configuration file:
-
------
-	max_connections = 1000 
-	query_cache_size = 128M 
-	table_cache = 2048M
-	open_files_limit = 2000
------
-
-See
-http://www.biblibre.com/en/blog/entry/mysql-default-config-and-very-large-koha-database[+http://www.biblibre.com/en/blog/entry/mysql-default-config-and-very-large-koha-database+]:
-
-
 
 
 CAGES Texas Tables
@@ -7402,6 +7514,8 @@ Moving from gcoos1 to gcoos2
 Copy the ERDDAP Configuration Files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Here's the list:
+
 * Tar the contents of +/opt/tomcat7/content+ on gcoos1 via:
 
 -----
@@ -7438,13 +7552,239 @@ cp /home/baum/erddap.war ./
 Edit the setup.xml File
 ~~~~~~~~~~~~~~~~~~~~~~~
 
+Here's the list:
+
 * Change +gcoos1+ to +gcoos2+
+* Do it again.
 
+Debugging the New ERDDAP 1.62 Version (July 2015)
+-------------------------------------------------
 
+Checking the Existence and Validity of the MySQL Database
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Log in to the MySQL database on +gcoos1.tamu.edu+:
 
+-----
+mysql -u root -p
+-----
 
+Show the available databases:
 
+-----
+show databases;
+-----
 
+to obtain:
 
+-----
++--------------------+
+| Database           |
++--------------------+
+| information_schema | 
+| CAGES              | 
+| fred               | 
+| mysql              | 
+| performance_schema | 
+| piwikDB            | 
+| test               | 
++--------------------+
+-----
 
+Select the +CAGES+ database:
+
+-----
+use CAGES;
+-----
+
+and list the tables in it:
+
+-----
+show tables;
+-----
+
+to obtain:
+
+-----
++------------------------------------------------+                                                         
+| Tables_in_CAGES                                |                                                         
++------------------------------------------------+                                                         
+| Alabama_CPUE                                   |                                                         
+| Alabama_Gear                                   |                                                         
+| Alabama_Hydrological                           |                                                         
+| Alabama_Lengths                                |                                                         
+| Alabama_Samples                                |                                                         
+| Alabama_Species                                |                                                         
+| Alabama_Stations                               |                                                         
+| Alabama_Trawls                                 |                                                         
+| CAGES_Texas_IOOS_Biology                       |                                                         
+| CAGES_Texas_IOOS_Biology2                      |                                                         
+| CAGES_Texas_IOOS_Biology_10                    |                                                         
+| CAGES_Texas_Join1_Image                        |                                                         
+| CAGES_Texas_Join1_Image_10                     |                                                         
+| CAGES_Texas_Join1_Image_SubBay                 |                                                         
+| CAGES_Texas_Join1_Image_Test                   |                                                         
+| CAGES_Texas_Join2_Image                        |                                                         
+| CAGES_Texas_Join3_Image                        |                                                         
+| CAGES_Texas_Join_Trawls_Lengths_Image          |                                                         
+| CAGES_Texas_Trawls_Lengths_IOOS_Standard       |                                                         
+| CAGES_Texas_Trawls_Lengths_IOOS_Standard_SNAFU |                                                         
+| Florida_Bottom_Type                            |                                                         
+| Florida_Bottom_Vegetation                      |                                                         
+| Florida_Bycatch                                |                                                         
+| Florida_CPUE                                   |                                                         
+| Florida_Habitat                                |                                                         
+| Florida_Hydrological                           |                                                         
+| Florida_Lengths                                |                                                         
+| Florida_Physical                               |                                                         
+| Florida_Shore_Type                             |                                                         
+| Florida_Species                                |                                                         
+| Florida_Stations                               | 
+| Florida_Trawls                                 | 
+| Louisiana_Biological                           | 
+| Louisiana_CPUE                                 | 
+| Louisiana_Duration                             | 
+| Louisiana_Gear                                 | 
+| Louisiana_Hydrological                         | 
+| Louisiana_Length_Units                         | 
+| Louisiana_Lengths                              | 
+| Louisiana_Numbering_Methods                    | 
+| Louisiana_Observations                         | 
+| Louisiana_Physical_Methods                     | 
+| Louisiana_Samples                              | 
+| Louisiana_Species                              | 
+| Louisiana_Stage                                | 
+| Louisiana_Stations                             | 
+| Louisiana_Weight_Measures                      | 
+| Mississippi_CPUE                               | 
+| Mississippi_Hydrological                       | 
+| Mississippi_Lengths                            | 
+| Mississippi_Samples                            | 
+| Mississippi_Species                            | 
+| Mississippi_Stations                           | 
+| Mississippi_Trawls                             | 
+| TMPTAB                                         | 
+| Texas_Bays                                     | 
+| Texas_CPUE                                     | 
+| Texas_Hydrological                             | 
+| Texas_Lengths                                  | 
+| Texas_Samples                                  | 
+| Texas_Species                                  | 
+| Texas_Stations                                 | 
+! Texas_SubBays                                  | 
+| Texas_Trawls                                   | 
+| example                                        | 
++------------------------------------------------+
+-----
+
+Grant privileges on +CAGES+ database to +baum+ at
++terrebonne+ to test ERDDAP 1.62 version installed there.
+
+-----
+grant all privileges on CAGES.* to baum@165.91.85.132 identified by 'password';
+-----
+
+Using +GenerateDatasetsXml+ on a Test Database
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This dataset XML generation program is located on +terrebonne+ at:
+
+-----
+/opt/tomcat7/webapps/erddap/WEB-INF/GenerateDatasetsXml.sh
+-----
+
+Solving a Quotation Problem
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The +log.txt+ file shows the +Texas_Bays+ table being constructed for ERDDAP via:
+
+-----
+*** constructing EDDTableFromDatabase CAGES_Texas_Bays
+
+dataSourceName wasn't specified, so connection pooling won't be used.
+
+EDDTableFromDatabase.makeConnection via DriverManager + datasets.xml info
+  Success! time=9
+
+database name=MySQL version=5.5.27-log
+driver name=MySQL Connector Java version=mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )
+jdbc majorVersion=4 minorVersion=0
+  accessibleViaNcCF=.ncCF/.ncCFMA isn't available for this dataset because cdm_data_type=Other is not a compatible type.
+EDDTableFromDatabase.makeConnection via DriverManager + datasets.xml info
+  Success! time=8
+  statement=com.mysql.jdbc.JDBC4PreparedStatement@22b482fb: SELECT DISTINCT "Bay_Location" FROM Texas_Bays
+ statement~=SELECT DISTINCT "Bay_Location" FROM Texas_Bays
+Table.saveAsFlatNc /raid/erddap/dataset/ys/CAGES_Texas_Bays/subset.nc
+  Table.saveAsFlatNc done. TIME=3
+* CAGES_Texas_Bays made subsetVariablesDataTable(null).  time=13
+* CAGES_Texas_Bays made distinctSubsetVariablesDataTable(null).  time=15 (includes subsetVariablesDataTable() time)
+FGDC isn't available for this dataset because there is no longitude and/or latitude variable.
+ISO 19115-2/19139 isn't available for this dataset because there is no longitude and/or latitude variable.
+
+*** EDDTableFromDatabase CAGES_Texas_Bays constructor finished. TIME=252
+-----
+
+The problem is the statement:
+
+-----
+SELECT DISTINCT "Bay_Location" FROM Texas_Bays
+-----
+
+which obtains:
+
+-----
++--------------+
+| Bay_Location |
++--------------+
+| Bay_Location | 
++--------------+
+1 row in set (0.00 sec)
+-----
+
+as opposed to the statement:
+
+-----
+SELECT DISTINCT Bay_Location FROM Texas_Bays
+-----
+
+which obtains:
+
+-----
++-------------------------------------------+
+| Bay_Location                              |
++-------------------------------------------+
+| ARANSAS BAY                               | 
+| CEDAR LAKES                               | 
+| CORPUS CHRISTI BAY                        | 
+| EAST MATAGORDA BAY                        | 
+| GALVESTON BAY                             | 
+| LOWER LAGUNA MADRE                        | 
+| MATAGORDA BAY                             | 
+| off Corpus Christi-Upper Laguna Madre     | 
+| off Galveston-Freeport                    | 
+| off Matagorda-San Antonio-Aransas         | 
+| off Sabine Lake                           | 
+| off upper Laguna Madre-lower Laguna Madre | 
+| SABINE LAKE                               | 
+| SAN ANTONIO BAY                           | 
+| UPPER LAGUNA MADRE                        | 
++-------------------------------------------+
+15 rows in set (0.00 sec)
+-----
+
+The solution can be found in the ERDDAP doc at:
+
+http://coastwatch.pfeg.noaa.gov/erddap/download/setupDatasetsXml.html#databaseQuotes[+http://coastwatch.pfeg.noaa.gov/erddap/download/setupDatasetsXml.html#databaseQuotes+]
+
+*****
+By default, EDDTableFromDatabase puts ANSI-SQL-standard double quotes around field/column names in SELECT statements in case you have used a reserved word as a field/column name, or a special character in a field/column name. The double quotes also thwart certain types of SQL injection attacks. You can tell ERDDAP to use ", ', or no quotes via <columnNameQuotes> in datasets.xml for this dataset. 
+*****
+
+Thus, the problem is solved by placing:
+
+-----
+<columnNameQuotes></columnNameQuotes>
+-----
+
+in every +dataset+ section of +datasets.xml+ to eliminate the default quotations placed around
+the variable names by ERDDAP.
